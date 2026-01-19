@@ -1,4 +1,4 @@
-package User
+package user
 
 type User struct {
 	IDUser   uint64 `gorm:"primaryKey;autoIncrement"`
