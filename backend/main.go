@@ -1,22 +1,18 @@
 package main
 
 import (
-	"net/http"
-	"os"
-
 	"github.com/gin-gonic/gin"
+	"ucc-arq-soft-I/database"
 )
 
 func main() {
-	r := gin.Default()
+	database.Connect()
+	database.Migrate()
 
+	r := gin.Default()
 	r.GET("/ping", func(c *gin.Context) {
-		c.JSON(http.StatusOK, gin.H{"ok": true, "msg": "pong"})
+		c.JSON(200, gin.H{"ok": true})
 	})
 
-	port := os.Getenv("APP_PORT")
-	if port == "" {
-		port = "8080"
-	}
-	_ = r.Run(":" + port)
+	r.Run(":8080")
 }
