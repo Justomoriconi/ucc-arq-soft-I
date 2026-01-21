@@ -8,3 +8,5 @@ type User struct {
 	Password string `json:"password"`
 	Role     string `json:"role"`
 }
+
+type Users []User
